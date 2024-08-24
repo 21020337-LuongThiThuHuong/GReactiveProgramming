@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.greactiveprogramming.databinding.ItemBinding
 
-class EmployeeAdapter(private val employees: MutableList<Employee>) :
-    RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>() {
-
+class EmployeeAdapter(
+    private val employees: MutableList<Employee>,
+) : RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>() {
     var onDeleteClicked: ((Employee) -> Unit)? = null
 
-    inner class EmployeeViewHolder(private val binding: ItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class EmployeeViewHolder(
+        private val binding: ItemBinding,
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(employee: Employee) {
             binding.employeeName.text = employee.name
             binding.employeeBirthyear.text = "Năm sinh: ${employee.birthYear}"
@@ -22,12 +23,18 @@ class EmployeeAdapter(private val employees: MutableList<Employee>) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): EmployeeViewHolder {
         val binding = ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return EmployeeViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: EmployeeViewHolder,
+        position: Int,
+    ) {
         holder.bind(employees[position])
     }
 
