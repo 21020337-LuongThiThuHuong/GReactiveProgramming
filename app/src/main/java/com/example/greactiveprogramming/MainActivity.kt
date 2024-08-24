@@ -151,6 +151,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         employeeAdapter.updateList(filteredEmployees)
+
+        if (filteredEmployees.isEmpty()) {
+            binding.noEmployeeText.visibility = View.VISIBLE
+        } else {
+            binding.noEmployeeText.visibility = View.GONE
+        }
     }
 
     private fun EditText.textChanges(): Flow<CharSequence> {
